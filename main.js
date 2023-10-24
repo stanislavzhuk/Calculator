@@ -9,7 +9,7 @@ buttons.forEach(button => {
   button.addEventListener('click', () => {
     const value = button.textContent;
 
-    if (/[0-9]/.test(value)) {
+    if (/[0-9]/.test(value) && currentValue.length < 13) {
       currentValue += value;
     } else if (
       value === '+' ||
@@ -27,7 +27,7 @@ buttons.forEach(button => {
       previousValue = currentValue;
       currentValue = '';
     } else if (value === '⌫') {
-        currentValue = currentValue.slice(0, -1);
+      currentValue = currentValue.slice(0, -1);
     } else if (value === '=') {
       if (currentOperator && previousValue && currentValue) {
         previousValue = String(
@@ -40,6 +40,20 @@ buttons.forEach(button => {
       previousValue = '';
       currentValue = '';
       currentOperator = '';
+    } else if (value === '±') {
+      if (currentValue) {
+        currentValue = (parseFloat(currentValue) * -1).toString();
+      }
+    } else if (value === '.') {
+      if (currentValue === '') {
+        currentValue = '0.';
+      } else if (!currentValue.includes('.')) {
+        currentValue += '.';
+      }
+    } else if (value === '%') {
+      if (currentValue) {
+        currentValue = (parseFloat(currentValue) / 100).toString();
+      }
     }
 
     display.value =

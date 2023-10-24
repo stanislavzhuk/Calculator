@@ -1,3 +1,10 @@
+:root {
+  --first-bg-color: #96a4d3;
+  --second-bg-color: #24294b;
+  --first-text-color: #fff;
+  --second-text-color: #a98f76;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -5,7 +12,7 @@ body {
   width: 100%;
   height: 100vh;
 
-  background: linear-gradient(45deg, #24294b, #96a4d3);
+  background: linear-gradient(45deg, var(--second-bg-color), var(--first-bg-color));
 }
 
 .container {
@@ -13,7 +20,7 @@ body {
   padding: 20px;
 
   border-radius: 15px;
-  box-shadow: -3px -5px 10px #24294b;
+  box-shadow: -3px -5px 10px var(--second-bg-color);
 }
 
 .display {
@@ -25,7 +32,7 @@ body {
   font-weight: 600;
   text-align: right;
 
-  color: #fff;
+  color: var(--first-text-color);
   background-color: transparent;
   border: none;
   outline: none;
@@ -34,7 +41,7 @@ body {
 }
 
 .display::placeholder {
-  color: #fff;
+  color: var(--first-text-color);
 }
 
 .buttons {
@@ -50,19 +57,18 @@ button {
   font-size: 22px;
   font-weight: 700;
 
-  color: #fff;
-  background-color: #96a4d3;
+  color: var(--first-text-color);
+  background-color: var(--first-bg-color);
   border: 0;
   border-radius: 12px;
-  box-shadow: -3px -5px 10px #24294b;
+  box-shadow: -3px -5px 10px var(--second-bg-color);
 
   transition: all 300ms ease;
 
   cursor: pointer;
 }
 
-button:hover,
-button:focus {
-  color: #a98f76;
-  background-color: #24294b;
+button:hover {
+  color: var(--second-text-color);
+  background-color: var(--second-bg-color);
 }
