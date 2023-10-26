@@ -7,16 +7,67 @@
 
 body {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
+  margin: 0;
+  background: linear-gradient(
+    45deg,
+    var(--second-bg-color),
+    var(--first-bg-color)
+  );
+}
 
-  background: linear-gradient(45deg, var(--second-bg-color), var(--first-bg-color));
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+
+  background-color: var(--second-bg-color);
+  color: var(--first-text-color);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
   max-width: 325px;
+  margin: 40px 0;
   padding: 20px;
 
   border-radius: 15px;
@@ -71,4 +122,61 @@ button {
 button:hover {
   color: var(--second-text-color);
   background-color: var(--second-bg-color);
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  margin-top: auto;
+
+  background-color: var(--second-bg-color);
+  color: var(--first-text-color);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.copyright {
+  font: 20px/24px sans-serif;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+
+  color: var(--first-text-color);
+  background-color: var(--first-bg-color);
+  border: transparent solid 2px;
+  border-radius: 50%;
+
+  transition: all 250ms ease-in-out;
+}
+
+.link:hover {
+  color: var(--second-text-color);
+  background-color: var(--second-bg-color);
+  border: var(--second-text-color) solid 2px;
+}
+
+.icon {
+  fill: currentColor;
 }
