@@ -30,11 +30,11 @@ buttons.forEach(button => {
       currentValue = currentValue.slice(0, -1);
     } else if (value === '=') {
       if (currentOperator && previousValue && currentValue) {
-        previousValue = String(
-          eval(previousValue + currentOperator + currentValue)
-        );
-        currentValue = '';
+        let result = eval(previousValue + currentOperator + currentValue);
+        result = result.toFixed(11);
+        currentValue = parseFloat(result).toString();
         currentOperator = '';
+        previousValue = '';
       }
     } else if (value === 'AC') {
       previousValue = '';
@@ -51,8 +51,10 @@ buttons.forEach(button => {
         currentValue += '.';
       }
     } else if (value === '%') {
-      if (currentValue) {
-        currentValue = (parseFloat(currentValue) / 100).toString();
+      if (previousValue && currentValue) {
+        const percentValue =
+          (parseFloat(previousValue) * parseFloat(currentValue)) / 100;
+        currentValue = percentValue.toString();
       }
     }
 
