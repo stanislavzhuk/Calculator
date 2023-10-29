@@ -10,12 +10,17 @@ buttons.forEach(button => {
     const value = button.textContent;
 
     if (/[0-9]/.test(value) && currentValue.length < 13) {
-      currentValue += value;
+      if (currentValue === '0' && !currentValue.includes('.')) {
+        currentValue = value;
+      } else {
+        currentValue += value;
+      }
     } else if (
-      value === '+' ||
-      value === '-' ||
-      value === '×' ||
-      value === '÷'
+      (value === '+' ||
+        value === '-' ||
+        value === '×' ||
+        value === '÷') &&
+      currentValue !== ''
     ) {
       if (value === '×') {
         currentOperator = '*';
@@ -31,8 +36,12 @@ buttons.forEach(button => {
     } else if (value === '=') {
       if (currentOperator && previousValue && currentValue) {
         let result = eval(previousValue + currentOperator + currentValue);
-        result = result.toFixed(11);
-        currentValue = parseFloat(result).toString();
+        let resultString = result.toString();
+        let maxLength = 13;
+        if (resultString.length > maxLength) {
+          resultString = resultString.slice(0, maxLength);
+        }
+        currentValue = resultString;
         currentOperator = '';
         previousValue = '';
       }

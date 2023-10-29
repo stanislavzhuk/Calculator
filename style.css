@@ -3,6 +3,8 @@
   --second-color: #24294b;
   --white-color: #fff;
   --accent-color: #a98f76;
+
+  --anim-fast: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -67,7 +69,12 @@ footer {
   gap: 20px;
   width: 1200px;
   margin: 0 auto;
-  padding: 15px;
+  padding: 0 15px;
+}
+
+.logo {
+  animation: colorChange 7000ms linear infinite;
+  fill: currentColor;
 }
 
 .title {
@@ -129,7 +136,7 @@ button {
   border-radius: 12px;
   box-shadow: -3px -5px 10px var(--second-color);
 
-  transition: all 300ms ease;
+  transition: all var(--anim-fast);
 
   cursor: pointer;
 }
@@ -166,7 +173,7 @@ footer {
   border: transparent solid 2px;
   border-radius: 50%;
 
-  transition: all 250ms ease-in-out;
+  transition: all var(--anim-fast);
 }
 
 .link:hover {
@@ -177,4 +184,17 @@ footer {
 
 .icon {
   fill: currentColor;
+}
+
+
+@keyframes colorChange {
+  0% {
+    fill: var(--white-color);
+  }
+  50% {
+    fill: var(--accent-color);
+  }
+  100% {
+    fill: var(--white-color);
+  }
 }
