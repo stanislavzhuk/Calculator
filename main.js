@@ -35,15 +35,20 @@ buttons.forEach(button => {
       currentValue = currentValue.slice(0, -1);
     } else if (value === '=') {
       if (currentOperator && previousValue && currentValue) {
-        let result = eval(previousValue + currentOperator + currentValue);
-        let resultString = result.toString();
-        let maxLength = 13;
-        if (resultString.length > maxLength) {
-          resultString = resultString.slice(0, maxLength);
+        if (currentOperator === '/' && parseFloat(currentValue) === 0) {
+          // display.value = "Error";
+          currentValue = '';
+        } else {
+          let result = eval(previousValue + currentOperator + currentValue);
+          let resultString = result.toString();
+          let maxLength = 13;
+          if (resultString.length > maxLength) {
+            resultString = resultString.slice(0, maxLength);
+          }
+          currentValue = resultString;
+          currentOperator = '';
+          previousValue = '';
         }
-        currentValue = resultString;
-        currentOperator = '';
-        previousValue = '';
       }
     } else if (value === 'AC') {
       previousValue = '';
